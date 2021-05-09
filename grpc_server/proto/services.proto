@@ -1,0 +1,16 @@
+syntax = "proto3";
+package EmailToken;
+option go_package = "./";
+
+message EmailTokenRequest{
+    string email = 1;
+    string token = 2;
+}
+
+message EmailTokenResponse{
+    bool response = 1;
+}
+
+service EmailToken {
+    rpc getEmailAndToken (EmailTokenRequest) returns (EmailTokenResponse) {}
+}
