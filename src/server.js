@@ -29,7 +29,7 @@ function getEmailAndToken(call, callback){
 function main() {
     let server = new grpc.Server();
     server.addService(email_token_proto.EmailToken.service, {getEmailAndToken: getEmailAndToken});
-    server.bindAsync('0.0.0.0:4500', grpc.ServerCredentials.createInsecure(), () =>{
+    server.bindAsync('192.168.1.22:4500', grpc.ServerCredentials.createInsecure(), () =>{
         server.start();
     });
   }
