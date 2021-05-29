@@ -19,9 +19,9 @@ async function sendEmail(destinationEmail, token){
       let info = await transporter.sendMail({
         from: '"OnTheWay 🛵" OnTheWayService@gmail.com', // sender address
         to: destinationEmail + ", " + destinationEmail, // list of receivers
-        subject: "Token confirmation ✔", // Subject line
+        subject: "OnTheWay Token ✔", // Subject line
         text: "", // plain text body
-        html: "<b>Querido usuario, aquí está su token de confirmación: </b>" + token, // html body
+        html: "<b>Estimado ususario, este su token: </b>" + token, // html body
       }).then(error=>{
           console.log(nodemailer.getTestMessageUrl(error))
       });
