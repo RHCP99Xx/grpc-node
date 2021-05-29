@@ -1,6 +1,6 @@
 syntax = "proto3";
-package EmailToken;
-option go_package = "./";
+package grpc;
+option go_package = "github.com/AdairHdz/OnTheWayRestAPI/ServicesLayer/services/proto";
 
 message EmailTokenRequest{
     string email = 1;

@@ -18,7 +18,7 @@ let packageDefinition = protoLoader.loadSync(
      oneofs: true
 });
 
-let email_token_proto = grpc.loadPackageDefinition(packageDefinition).EmailToken;
+let email_token_proto = grpc.loadPackageDefinition(packageDefinition).grpc;
 
 function getEmailAndToken(call, callback){
     let isSent = sendEmail.sendEmail(call.request.email, call.request.token)
@@ -28,8 +28,9 @@ function getEmailAndToken(call, callback){
 
 function main() {
     let server = new grpc.Server();
-    server.addService(email_token_proto.EmailToken.service, {getEmailAndToken: getEmailAndToken});
-    server.bindAsync('192.168.1.22:4500', grpc.ServerCredentials.createInsecure(), () =>{
+    server.addService(email_token_proto.EmailToken.service, {getEmailAndToken});
+    server.bindAsync('0.0.0.0:4500', grpc.ServerCredentials.createInsecure(), () =>{
+        console.log("Server listening...")
         server.start();
     });
   }
